@@ -26,7 +26,11 @@ form.addEventListener('submit', (e) => {
           })
           .then((response) => response.json())
           .then((data) => {
+              if(data.hasTable) {
             alert(`Adding table for: ${data.name}`);
+              } else {
+                  alert('Put on waitlist- no more open tables!')
+              }
           })
           .catch((error) => {
             console.error('Error:', error);
