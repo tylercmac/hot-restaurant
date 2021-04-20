@@ -2,7 +2,7 @@ const { response } = require("express");
 const e = require("express");
 
 const form = document.querySelector('#form');
-const reserveList = document.querySelector('#reserve-list');
+const reserveList = document.querySelector('#.container');
 const waitList = document.querySelector('#wait-list');
 const viewTables = document.querySelector('.view-tables')
 
@@ -53,8 +53,19 @@ const createReserveTable = () => {
     .then((response) => response.json())
     .then((data) => {
         for (const datum of data) {
-            const reserveTable = document.createElement('li');
-            reserveTable.textContent = datum.name;
+            const reserveTable = `        
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+            ${datum.id}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">${datum.name}</li>
+                <li class="list-group-item">Phone: ${datum.phone}</li>
+                <li class="list-group-item">Email: ${datum.email}</li>
+                <li class="list-group-item">ID: ${datum.id}</li>
+            </ul>
+        </div>`
+    
             reserveList.append(reserveTable);
         }
     })    
