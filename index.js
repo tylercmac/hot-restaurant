@@ -26,8 +26,12 @@ app.get("/api/waitlist", (req, res) => res.json(waitlist));
 app.post("/api/tables", (req, res) => {
     const newTable = req.body;
     console.log(newTable);
-    
-
+    if(tables.length < 5) {
+    tables.push(newTable);
+    } else {
+        waitlist.push(newTable);
+    }
+    res.json(newTable);
 })
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
