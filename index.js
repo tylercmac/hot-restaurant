@@ -22,15 +22,16 @@ app.get("/api/tables", (req, res) => res.json(tables));
 
 app.get("/api/waitlist", (req, res) => res.json(waitlist));
 
-app.get('/', (req, res) => {
-    res.send('server live!')
-})
 
 app.post("/api/tables", (req, res) => {
     const newTable = req.body;
     console.log(newTable);
-    
-
+    if(tables.length < 5) {
+    tables.push(newTable);
+    } else {
+        waitlist.push(newTable);
+    }
+    res.json(newTable);
 })
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
