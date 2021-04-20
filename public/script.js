@@ -4,6 +4,7 @@ const e = require("express");
 const form = document.querySelector('#form');
 const reserveList = document.querySelector('#reserve-list');
 const waitList = document.querySelector('#wait-list');
+const viewTables = document.querySelector('.view-tables')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -34,6 +35,7 @@ form.addEventListener('submit', (e) => {
               } else {
                   alert('Put on waitlist- no more open tables!')
               }
+              createReserveTable();
           })
           .catch((error) => {
             console.error('Error:', error);
@@ -52,7 +54,10 @@ const createReserveTable = () => {
     .then((data) => {
         for (const datum of data) {
             const reserveTable = document.createElement('li');
-            reserveTable.textContent = datum;
+            reserveTable.textContent = datum.name;
+            reserveList.append(reserveTable);
         }
     })    
 }
+
+
