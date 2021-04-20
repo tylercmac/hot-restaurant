@@ -27,8 +27,10 @@ app.post("/api/tables", (req, res) => {
     const newTable = req.body;
     console.log(newTable);
     if(tables.length < 5) {
+        newTable.hasTable = true;
     tables.push(newTable);
     } else {
+        newTable.hasTable = false;
         waitlist.push(newTable);
     }
     res.json(newTable);
