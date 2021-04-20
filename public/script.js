@@ -1,13 +1,14 @@
 const { response } = require("express");
-const e = require("express");
+
 
 const form = document.querySelector('#form');
-const reserveList = document.querySelector('#.container');
+const reserveList = document.querySelector('.tablelist');
 const waitList = document.querySelector('#wait-list');
 const viewTables = document.querySelector('.view-tables')
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('Submit', (e) => {
     e.preventDefault();
+    console.log('submit is working')
     
     let tableName = document.getElementById('name').value.trim();
     let tablePhone = document.getElementById('phone').value.trim();
