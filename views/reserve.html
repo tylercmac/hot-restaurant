@@ -18,26 +18,26 @@
                 <button id="makeRes"><i class="bi bi-house-fill"></i></button>
     </div>
 
-    <div class="container">
+    <form class="container" id="form">
         <h4>Table Reservations</h4>
             <div class="mb-3">
                 <label for="email" class="form-label">Name:</label>
-                <input class="form-control" type="text" placeholder="First and Last Name" aria-label="name">
+                <input class="form-control" type="text" id='name' placeholder="First and Last Name" aria-label="name">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Phone #:</label>
-                <input class="form-control" type="text" placeholder="Phone #" aria-label="phone">
+                <input class="form-control" type="text" id='phone' placeholder="Phone #" aria-label="phone">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email address:</label>
-                <input type="email" class="form-control" placeholder="name@example.com">
+                <input type="email" class="form-control" id='email' placeholder="name@example.com">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Unique ID:</label>
-                <input class="form-control" type="text" placeholder="ID" aria-label="id">
+                <input class="form-control" type="text" id='id' placeholder="ID" aria-label="id">
             </div>
             <input class="btn btn-primary" type="submit" value="Submit">
-    </div>
+    </form>
     <a href="/tables">API Table Link</a>
     <a href="#">API Wait List</a>
 
