@@ -12,7 +12,7 @@ app.use(express.static('public'))
 const tables = [];
 const waitlist = [];
 
-//app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 
 app.get("/tables", (req, res) => res.sendFile(path.join(__dirname, "tables.html")));
 
