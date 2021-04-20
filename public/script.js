@@ -1,26 +1,36 @@
-const viewBtn = document.querySelector('#viewTables');
-const reserveBtn = document.querySelector('#makeRes');
+const e = require("express");
+
 const form = document.querySelector('#form');
 
-viewBtn.addEventListener('click', () => {
-    fetch('/tables', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-          },
-    })
-})
-
-
-reserveBtn.addEventListener('click', () => {
-    fetch('/reserve', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-          },
-    })
-})
-
-form.addEventListener('submit', () => {
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
     
+    let tableName = document.getElementById('name').value.trim();
+    let tablePhone = document.getElementById('phone').value.trim();
+    let tableEmail = document.getElementById('email').value.trim();
+    let tableId = document.getElementById('id').value.trim();
+    
+    let newTable = {
+        name: tableName,
+        phone: parseInt(tablePhone) ,
+        email: tableEmail,
+        id: parseInt(tableId),
+    }
+
+        fetch(`/api/tables`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newTable)
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            alert(`Adding table for: ${data.name}`);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+
+
 })
