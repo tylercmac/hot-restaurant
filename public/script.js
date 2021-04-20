@@ -1,3 +1,5 @@
+const e = require("express");
+
 const viewBtn = document.querySelector('#viewTables');
 const reserveBtn = document.querySelector('#makeRes');
 const form = document.querySelector('#form');
@@ -22,5 +24,11 @@ reserveBtn.addEventListener('click', () => {
 })
 
 form.addEventListener('submit', () => {
-    
+    e.preventDefault();
+    fetch(`/api/tables`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
 })
