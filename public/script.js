@@ -1,6 +1,9 @@
+const { response } = require("express");
 const e = require("express");
 
 const form = document.querySelector('#form');
+const reserveList = document.querySelector('#reserve-list');
+const waitList = document.querySelector('#wait-list');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -36,5 +39,20 @@ form.addEventListener('submit', (e) => {
             console.error('Error:', error);
           });
 
-
 })
+
+const createReserveTable = () => {
+    fetch(`/api/tables`, {
+        method: `GET`,
+        headers: {
+            'Content-Type': 'application/json',
+          }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        for (const datum of data) {
+            const reserveTable = document.createElement('li');
+            reserveTable.textContent = datum;
+        }
+    })    
+}
